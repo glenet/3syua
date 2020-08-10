@@ -61,6 +61,16 @@ getScreenHeight()
 }
 
 #/*************************************************************************/ /*!
+#@Function       doMouseClick
+#@Description    Simulating mouse clicking
+#*/ /**************************************************************************/
+#
+doMouseClick()
+{
+	xdotool click 1
+}
+
+#/*************************************************************************/ /*!
 #@Function       doMouseMove
 #@Description    Simulating mouse moving
 #@Input          $1 The ratio of offests on horizontal axis.
@@ -191,7 +201,7 @@ do
 	# At the stages, we should already in game and be able to do missions.
 	# ---- Starting to do tasks ---
 	# Skip any notification
-	xdotool click 1
+	doMouseClick
 	sleep 0.5
 
 	# Go to world map
