@@ -76,7 +76,6 @@ doMouseMove()
 
 	# Since people have a variety of different screens, using ratio to
 	# calculate coordinate should be more consistent.
-	#x=$(echo "$x / 100" | bc -l)
 	x=$(expr $width*$x/100 |bc -l)
 	y=$(expr $height*$y/100 |bc -l)
 
@@ -99,7 +98,6 @@ doMouseMoveAndClick()
 
 	# Since people have a variety of different screens, using ratio to
 	# calculate coordinate should be more consistent.
-	#x=$(echo "$x / 100" | bc -l)
 	x=$(expr $width*$x/100 |bc -l)
 	y=$(expr $height*$y/100 |bc -l)
 
@@ -122,7 +120,6 @@ doMouseDrag()
 
 	# Since people have a variety of different screens, using ratio to
 	# calculate coordinate should be more consistent.
-	#x=$(echo "$x / 100" | bc -l)
 	x=$(expr $width*$x/100 |bc -l)
 	y=$(expr $height*$y/100 |bc -l)
 
