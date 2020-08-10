@@ -160,7 +160,7 @@ doKeyBoardInput()
 
 # Waiting on the game.
 #
-sleep 3
+sleep 5
 
 # The simple steps are implemented here and described them inline.
 #
@@ -176,14 +176,15 @@ do
 	username="$ACCOUNT_PREFIX""$ACCOUNT_POSTFIX"
 
 	# Typing username.
-	# width: 40%, height: 33%
-	doMouseMoveAndClick 40 33
+	# width: 40%, height: 30%
+	doMouseMoveAndClick 40 30
 	doKeyBoardInput $username
 
 	# Typing password.
 	# width: 40%, height: 43%
 	doMouseMoveAndClick 40 43
 	doKeyBoardInput $username
+	sleep 2
 
 	# Clicking login button.
 	# width: 50%, height: 60%
@@ -192,6 +193,11 @@ do
 	# Waiting on login
 	sleep 2
 	# ----------------End----------------
+
+	# Dimiss announcement.
+	# width: 50%, height: 60%
+	doMouseMoveAndClick 63 35
+	sleep 0.5
 
 	# Another login button with animation.
 	# width: 50%, height: 85%
@@ -223,11 +229,11 @@ do
 	doMouseMoveAndClick 60 95
 	sleep 0.5
 	# Back to world map
-	# width: 60%, height: 20%
-	doMouseMoveAndClick 60 20
+	# width: 62%, height: 20%
+	doMouseMoveAndClick 62 20
 	sleep 0.5
-	# width: 60%, height: 20%
-	doMouseMoveAndClick 60 20
+	# width: 62%, height: 20%
+	doMouseMoveAndClick 62 20
 	sleep 0.5
 
 	# Moving cursor to central for dragging frame in order to see the
@@ -243,35 +249,35 @@ do
 	sleep 0.5
 
 	# Choosing our own server
-	# width: 40%, height: 50%
-	doMouseMoveAndClick 40 50
+	# width: 50%, height: 50%
+	doMouseMoveAndClick 50 50
 	sleep 0.5
 
 	# Golds for power ranking
 	# width: 60%, height: 95%
-	doMouseMoveAndClick 40 95
+	doMouseMoveAndClick 60 95
 	sleep 0.5
 
 	# Golds for class ranking
-	# width: 47%, height: 27%
-	doMouseMoveAndClick 47 27
+	# width: 45%, height: 27%
+	doMouseMoveAndClick 45 27
 	sleep 0.5
 	# width: 60%, height: 95%
-	doMouseMoveAndClick 40 95
+	doMouseMoveAndClick 60 95
 	sleep 0.5
 
 	# Golds for love ranking
-	# width: 47%, height: 27%
-	doMouseMoveAndClick 47 27
+	# width: 50%, height: 27%
+	doMouseMoveAndClick 50 27
 	sleep 0.5
 	# width: 60%, height: 95%
-	doMouseMoveAndClick 40 95
+	doMouseMoveAndClick 60 95
 	sleep 0.5
 	# ----------------End----------------
 
 	# Logout and change to the next account
-	# width: 74%, height: 65%
-	doMouseMoveAndClick 74 65
+	# width: 72%, height: 3%
+	doMouseMoveAndClick 72 3
 	sleep 5
 
 	i=$(($i+1))
