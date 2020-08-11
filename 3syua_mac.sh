@@ -25,7 +25,7 @@
 # - Mac OS (Mac OS does not work as xdotool is not supported properly.)
 # - Google Chrome
 # - cliclick
-    brew install cliclick
+#    brew install cliclick
 
 # To define how many accounts that will run the scripts to request golds.
 # This definition can be overwritten depends on your demands.
@@ -46,7 +46,8 @@ ACCOUNT_PREFIX='mtest'
 #
 getScreenWidth()
 {
-	system_profiler SPDisplaysDataType | grep Resolution | sed -E 's/^[^0-9]*([0-9]+x[0-9]+).*$/\1/'| \
+	system_profiler SPDisplaysDataType | grep Resolution | \
+		sed -E 's/^[^0-9]*([0-9]+x[0-9]+).*$/\1/'| \
 		cut -d'x' -f1 | awk '{ print $2 }'
 }
 
@@ -57,7 +58,8 @@ getScreenWidth()
 #
 getScreenHeight()
 {
-	system_profiler SPDisplaysDataType | grep Resolution | sed -E 's/^[^0-9]*([0-9]+x[0-9]+).*$/\1/'| \
+	system_profiler SPDisplaysDataType | grep Resolution | \
+		sed -E 's/^[^0-9]*([0-9]+x[0-9]+).*$/\1/'| \
 		cut -d'x' -f2
 }
 
@@ -147,7 +149,9 @@ doKeyBoardInput()
 #
 # Launch Chrome browser with the game URL.
 #
-open --new -a "Google Chrome" --args --new-window --user-data-dir --start-fullscreen "https://h5.3syua.com/tw/syua?cid=48&scid=3syua_button"
+open --new -a "Google Chrome" --args --new-window --user-data-dir \
+	--start-fullscreen "https://h5.3syua.com/tw/syua?cid=48&scid=3syua_button"
+
 # Waiting on the game.
 #
 sleep 5
