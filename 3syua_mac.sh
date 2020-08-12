@@ -79,8 +79,8 @@ doMouseMove()
 
 	# Since people have a variety of different screens, using ratio to
 	# calculate coordinate should be more consistent.
-	x=$(expr $width*$x/100 |bc -l)
-	y=$(expr $height*$y/100 |bc -l)
+	x=$(echo $width*$x/100 |bc -l)
+	y=$(echo $height*$y/100 |bc -l)
 
 	cliclick m:${x%.*},${y%.*}
 }
@@ -100,8 +100,8 @@ doMouseMoveAndClick()
 	y=$2
 	# Since people have a variety of different screens, using ratio to
 	# calculate coordinate should be more consistent.
-	x=$(expr $width*$x/100 |bc -l)
-	y=$(expr $height*$y/100 |bc -l)
+	x=$(echo $width*$x/100 |bc -l)
+	y=$(echo $height*$y/100 |bc -l)
 
 	cliclick c:${x%.*},${y%.*}
 }
@@ -124,10 +124,10 @@ doMouseDrag()
 
 	# Since people have a variety of different screens, using ratio to
 	# calculate coordinate should be more consistent.
-	x1=$(expr $width*$x1/100 |bc -l)
-	y1=$(expr $height*$y1/100 |bc -l)
-	x2=$(expr $width*$x2/100 |bc -l)
-	y2=$(expr $height*$y2/100 |bc -l)
+	x1=$(echo $width*$x1/100 |bc -l)
+	y1=$(echo $height*$y1/100 |bc -l)
+	x2=$(echo $width*$x2/100 |bc -l)
+	y2=$(echo $height*$y2/100 |bc -l)
 
 	cliclick dd:${x1%.*},${y1%.*}
 	sleep 0.5
