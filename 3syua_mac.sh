@@ -48,7 +48,7 @@ getScreenWidth()
 {
 	system_profiler SPDisplaysDataType | grep Resolution | \
 		sed -E 's/^[^0-9]*([0-9]+x[0-9]+).*$/\1/'| \
-		cut -d'x' -f1 | awk '{ print $2 }'
+		cut -d'x' -f1 | awk '{print $2}'
 }
 
 #/*************************************************************************/ /*!
@@ -60,7 +60,7 @@ getScreenHeight()
 {
 	system_profiler SPDisplaysDataType | grep Resolution | \
 		sed -E 's/^[^0-9]*([0-9]+x[0-9]+).*$/\1/'| \
-		cut -d'x' -f2
+		cut -d'x' -f2 | awk '{print $1}'
 }
 
 #/*************************************************************************/ /*!
