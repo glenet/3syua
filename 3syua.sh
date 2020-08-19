@@ -26,18 +26,6 @@
 # - Google Chrome
 # - xdotool
 
-# To define how many accounts that will run the scripts to request golds.
-# This definition can be overwritten depends on your demands.
-#
-NUM_ACCOUNT=10
-
-# "ACCOUNT_PREFIX" defines what the forms of accounts and passwords.
-# For instance, if ACCOUNT_PREFIX is mtest, the accounts will mtest_000,
-# mtest_001 and so on. So bear in mind the forms when you're creating
-# replacement accounts.
-#
-ACCOUNT_PREFIX='mtest' 
-
 #/*************************************************************************/ /*!
 #@Function       getScreenWidth
 #@Description    Get the width of screen
@@ -162,18 +150,13 @@ doKeyBoardInput()
 #
 sleep 5
 
-# The simple steps are implemented here and described them inline.
-#
-i=0
-while [ $i != $NUM_ACCOUNT ]
+ACCOUNT_1="mtest_000 mtest_001 mtest_002 mtest_003"
+
+for username in $ACCOUNT_1
 do
-	# Format ids to three digits.
-	ACCOUNT_POSTFIX=_$(printf "%03d" $i)
 
 	# ---- Starting to login the game ---
-	# The username and password are sharing the same strings which
-	# is mtest_00{0->$NUM_ACCOUNT} if ACCOUNT_PREFIX is default.
-	username="$ACCOUNT_PREFIX""$ACCOUNT_POSTFIX"
+	# The username and password are sharing the same strings.
 
 	# Typing username.
 	# width: 40%, height: 30%
@@ -280,5 +263,15 @@ do
 	doMouseMoveAndClick 72 3
 	sleep 5
 
-	i=$(($i+1))
 done
+
+# Add additional actions here if you'd like to.
+# Template:
+# ACCOUNTS_2="...."
+#  for username in $ACCOUNT_1
+#  do
+#     ACTIONS
+#  done
+
+
+
