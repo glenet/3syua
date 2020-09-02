@@ -111,19 +111,12 @@ doMouseMoveAndClick()
 #
 doMouseDrag()
 {
-	width=$(getScreenWidth)
-	height=$(getScreenHeight)
 	x=$1
 	y=$2
 
-	# Since people have a variety of different screens, using ratio to
-	# calculate coordinate should be more consistent.
-	x=$(expr $width*$x/100 |bc -l)
-	y=$(expr $height*$y/100 |bc -l)
-
 	xdotool mousedown 1
 	sleep 0.5
-	xdotool mousemove_relative --sync $x $y
+	xdotool mousemove_relative --sync -- $x $y
 	sleep 0.5
 	xdotool mouseup 1
 }
@@ -223,7 +216,7 @@ do
 	# ranking label.
 	doMouseMove 50 50
 	sleep 0.5
-	doMouseDrag 90 0
+	doMouseDrag 200 0
 	sleep 0.5
 
 	# Visiting the lists
