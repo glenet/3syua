@@ -247,7 +247,7 @@ doDismissBE()
 dodismissBEALL()
 {
 	# Choose do not show again
-	doMouseMoveAndClick 47.14 92.95
+	doMouseMoveAndClick 47.14 94.39
 
 	sleep 1
 
@@ -424,7 +424,7 @@ doClanConstruction()
 	then
 		# Choose low construction
 		doMouseMoveAndClick 56.8 37.2
-		skeep 1
+		sleep 1
 	fi
 
 	# Quit clan
@@ -969,8 +969,6 @@ lazyroutine()
 
 	doWorldHome
 
-    doClanConstruction high
-
     # Choose mission
     doMouseMoveAndClick 55.5 94.7
     sleep 1
@@ -1004,8 +1002,6 @@ lazyroutinenotaofa()
 	doWorldHome
 
 	doWorldHome
-
-    doClanConstruction high
 
     # Choose mission
     doMouseMoveAndClick 55.5 94.7
@@ -1096,5 +1092,74 @@ doSilkroad()
 	sleep 1
 
 	# Quit
+	doSoftBack
+}
+
+doguankapass()
+{
+    r=$1
+    r="${r:-10}"
+    # Click multiple times 
+    doMouseMoveAndClick 58.27 95.04
+    doMultipleClick $r
+}
+
+doPassandOneClickBattle()
+{
+    doguankapass
+    doMouseMoveAndClick 61.71 76.14
+    sleep 5
+    doguankapass 4
+}
+
+guankaround()
+{
+    # Click fuben 1 - 5
+    # Fuben 1
+    doMouseMoveAndClick 42.02 72.62
+    doPassandOneClickBattle
+
+    # Fuben 2
+    doMouseMoveAndClick 51.68 68.70
+    doPassandOneClickBattle
+
+    # Fuben 3
+    doMouseMoveAndClick 59.73 56.19
+    doPassandOneClickBattle
+
+    # Fuben 4
+    doMouseMoveAndClick 48.75 52.80
+    doPassandOneClickBattle
+
+    # Fuben 5
+    doMouseMoveAndClick 56.66 45.76
+    doPassandOneClickBattle
+
+    # Boss
+    doMouseMoveAndClick 46.77 39.89
+    sleep 2
+    # AutoBattle
+    doguankapass
+    doMouseMoveAndClick 61.05 70.92
+    sleep 2
+    doguankapass 4
+
+
+    # Claim reward
+    doMouseMoveAndClick 50.14 94.13
+    sleep 2
+    doguankapass 2
+}
+
+doGuanka()
+{
+    # Go to guanka
+    doMouseMoveAndClick 54.02 50.97
+    sleep 1
+
+    guankaround
+
+    guankaround
+
 	doSoftBack
 }
