@@ -241,6 +241,7 @@ doDismissBE()
     # Dismiss notification of Ecents
     doMouseMoveAndClick 62 21.68
     sleep 1.5
+	doSoftBack
 }
 
 
@@ -267,8 +268,9 @@ dodismissBEALL()
 doDismissNewMonth()
 {
     # Dismiss notification of Ecents
-    doMouseMoveAndClick 62 20
-    sleep 1.5
+	doSoftBack
+	doSoftBack
+	doSoftBack
 }
 
 #/*************************************************************************/ /*!
@@ -503,6 +505,12 @@ doClaim()
     sleep 1
     doMouseMoveAndClick 50 81.3
     sleep 1
+
+	if [ $1 = morning ]
+	then
+		doMouseMoveAndClick 60.68 88.26
+		sleep 1
+	fi
 
     doSoftBack
 }
@@ -1029,7 +1037,31 @@ minilazyRoutine()
 {
     doClaim
 
-	doQinjiaSchool
+	doWorldHome
+
+    doWorship
+
+	doClanConstruction high
+    # Choose mission
+    doMouseMoveAndClick 55.5 94.7
+    sleep 1
+
+    # Finish three missions
+    doMouseMoveAndClick 58 39.2
+    sleep 1 
+    doMouseMoveAndClick 58 49.4
+    sleep 1 
+    doMouseMoveAndClick 58 60.3
+    sleep 1 
+
+    # Claim the rewards
+    doMouseMoveAndClick 43.8 26.5
+    sleep 1
+    doMouseMoveAndClick 48 26.5
+    sleep 1
+
+    # QuitGame
+    doQuitGame
 }
 
 doTaofa()
@@ -1106,7 +1138,7 @@ doguankapass()
 
 doPassandOneClickBattle()
 {
-    doguankapass
+    doguankapass $1
     doMouseMoveAndClick 61.71 76.14
     sleep 5
     doguankapass 4
@@ -1117,49 +1149,174 @@ guankaround()
     # Click fuben 1 - 5
     # Fuben 1
     doMouseMoveAndClick 42.02 72.62
-    doPassandOneClickBattle
+    doPassandOneClickBattle $1
 
     # Fuben 2
     doMouseMoveAndClick 51.68 68.70
-    doPassandOneClickBattle
+    doPassandOneClickBattle $1
 
     # Fuben 3
     doMouseMoveAndClick 59.73 56.19
-    doPassandOneClickBattle
+    doPassandOneClickBattle $1
 
     # Fuben 4
     doMouseMoveAndClick 48.75 52.80
-    doPassandOneClickBattle
+    doPassandOneClickBattle $1
 
     # Fuben 5
     doMouseMoveAndClick 56.66 45.76
-    doPassandOneClickBattle
+    doPassandOneClickBattle $1
 
     # Boss
     doMouseMoveAndClick 46.77 39.89
     sleep 2
     # AutoBattle
-    doguankapass
+    doguankapass $1
     doMouseMoveAndClick 61.05 70.92
     sleep 2
-    doguankapass 4
+    doguankapass
+	sleep 1
 
 
     # Claim reward
     doMouseMoveAndClick 50.14 94.13
     sleep 2
+	doMouseMoveAndClick 50.14 94.13
+	sleep 2
     doguankapass 2
 }
 
+
+
 doGuanka()
 {
-    # Go to guanka
+	# Go to guanka
     doMouseMoveAndClick 54.02 50.97
     sleep 1
+	# $1 the round of the loop, default 1
+	# $2 how many times of clicks before battle, default 2
+	t=$1
+	t="${t:-1}"
+	b=$2
+	b="${b:-2}"
 
-    guankaround
+	while [ $t -ge 1 ] 
+	do
+		guankaround $b
+		t=$(($t-1))
+	done
+}
 
-    guankaround
+dominiGuanka()
+{
+    # A special case of guanka, do it for 2 rounds with 10 clicks before battles
+	doGuanka 2 10
+}
+
+dominiChildren()
+{
+	# Drag and see children
+    doMouseMove 61.5 80
+	sleep 1
+	doMouseDrag 270 120
+	sleep 1
+
+    # Click children
+    doMouseMoveAndClick 56 66
+    sleep 1
+    
+    # Choose children 1
+	doMouseMoveAndClick 41.14 91.52
+	sleep 1
+
+	# Click 2 times middle to raise child but not graduate
+	doMouseMoveAndClick 49.56 57.88
+	sleep 1
+	doMouseClick 
+	sleep 1
+
+
+	# Choose children 2 
+	doMouseMoveAndClick 46.19 91.39
+	sleep 1
+	doMouseClick
+	sleep 1
+	# Click 2 times middle to raise child but not graduate
+	doMouseMoveAndClick 49.56 57.88
+	sleep 1
+	doMouseClick 
+	sleep 1
+
+	# Choose children 3
+	doMouseMoveAndClick 50.73 91.26
+	sleep 1
+	doMouseClick
+	sleep 1
+	# Click 2 times middle to raise child but not graduate
+	doMouseMoveAndClick 49.56 57.88
+	sleep 1
+	doMouseClick 
+	sleep 1
+
+    doSoftBack
+}
+
+dominiVisit()
+{
+	# Drag twice to see visit
+	doMouseMove 50 46
+	sleep 0.5
+	doMouseDrag 270 140
+	sleep 1
+	doMouseMove 50 46
+	sleep 0.5
+	doMouseDrag 270 140
+	sleep 1
+
+	# Click Visit
+	doMouseMoveAndClick 62.5 63.2
+	sleep 1
+
+	# Click visit
+	doMouseMoveAndClick 58 94.2
+	sleep 0.5
 
 	doSoftBack
+
+	# Click Visit
+	doMouseMoveAndClick 62.5 63.2
+	sleep 1
+
+	# Click visit
+	doMouseMoveAndClick 58 94.2
+	sleep 0.5
+
+	doSoftBack
+
+	# Click Visit
+	doMouseMoveAndClick 62.5 63.2
+	sleep 1
+
+	# Click visit
+	doMouseMoveAndClick 58 94.2
+	sleep 0.5
+
+	doSoftBack
+
+
+	# Quit visit
+	doSoftBack
+}
+
+miniRoutine()
+{
+	doClaim
+
+	doWorldHome
+
+	dominiVisit
+
+	doWorldHome
+
+	dominiChildren
 }
